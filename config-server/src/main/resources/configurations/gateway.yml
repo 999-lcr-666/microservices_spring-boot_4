@@ -1,0 +1,61 @@
+eureka:
+  client:
+    register-with-eureka: false
+
+server:
+  port: 8222
+
+spring:
+  application:
+    name: gateway
+  # config:
+  #   import: optional:configserver:http://localhost:8888
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: books
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/v1/books/**
+        - id: authors
+          uri: http://localhost:8071
+          predicates:
+            - Path=/api/v1/authors/**
+
+  sleuth:
+    sampler:
+      probability: 1.0  # 100% of the requests will be traced, change as needed
+
+  zipkin:
+    base-url: http://zipkin:9411  # URL of your Zipkin server (make sure Zipkin is running on this URL)
+    sender:
+      type: web  # Use HTTP for sending traces to Zipkin
+    enabled: true  # Enable tracing
+
+  # Optional: Set how much data should be retained by Zipkin
+  retention:
+    period: 48h  # Retain traces for 48 hours
+
+management:
+  metrics:
+    enable:
+      all: true
+  tracing:
+    sampling:
+      probability: 1
+    enabled: true
+  exporter:
+    zipkin:
+      enabled: true
+      base-url: http://zipkin:9411  # The base URL where Zipkin is running
+
+
+
+
+#management:
+#  tracing:
+#    sampling:
+#      probability: 1.0

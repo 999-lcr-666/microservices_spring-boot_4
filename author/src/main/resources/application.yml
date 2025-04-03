@@ -1,0 +1,30 @@
+#server:
+#  port: 8071
+
+spring:
+  application:
+    name: authors
+  config:
+    import: optional:configserver:http://localhost:8888
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://localhost:5432/authors
+#    username: username
+#    password: password
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    database: POSTGRESQL
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#
+#eureka:
+#  instance:
+#    hostname: localhost # Eureka instance settings
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka # Defines the default Eureka service URL where clients can register
+#
+#application:
+#  config:
+#    books-url: http://localhost:8222/api/v1/books
+

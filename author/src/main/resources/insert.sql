@@ -1,0 +1,12 @@
+INSERT INTO public.author
+(id, email, "name")
+VALUES(1, 'aa@aaaa', 'AAAA');
+INSERT INTO public.author
+(id, email, "name")
+VALUES(2, 'bb@bbbb', 'BBBB');
+INSERT INTO public.author
+(id, email, "name")
+VALUES(3, 'cc@cccc', 'CCCC');
+INSERT INTO public.author
+(id, email, "name")
+VALUES(4, 'dd@dddd', 'DDDD');

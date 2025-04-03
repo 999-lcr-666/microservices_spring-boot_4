@@ -1,0 +1,69 @@
+server:
+  port: 8071
+
+spring:
+  application:
+    name: authors
+  # comment config server because it is already here
+  # config:
+  #  import: optional:configserver:http://localhost:8888
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/authors
+    username: username
+    password: password
+  jpa:
+    hibernate:
+      #ddl-auto: create
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+
+  sleuth:
+    sampler:
+      probability: 1.0  # 100% of the requests will be traced, change as needed
+
+  zipkin:
+    base-url: http://zipkin:9411  # URL of your Zipkin server (make sure Zipkin is running on this URL)
+    sender:
+      type: web  # Use HTTP for sending traces to Zipkin
+    enabled: true  # Enable tracing
+
+  # Optional: Set how much data should be retained by Zipkin
+  retention:
+    period: 48h  # Retain traces for 48 hours
+
+management:
+  metrics:
+    enable:
+      all: true
+  tracing:
+    sampling:
+      probability: 1
+    enabled: true
+  exporter:
+    zipkin:
+      enabled: true
+      base-url: http://zipkin:9411  # The base URL where Zipkin is running
+
+
+
+
+
+
+#management:
+#  tracing:
+#    sampling:
+#      probability: 1.0
+
+eureka:
+  instance:
+    hostname: localhost # Eureka instance settings
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka # Defines the default Eureka service URL where clients can register
+
+application:
+  config:
+    books-url: http://localhost:8222/api/v1/books
+

@@ -1,0 +1,20 @@
+server:
+  port: 8761 # The Eureka Server will run on port 8761, which is the default port for Eureka
+
+#spring:
+#  application:
+#    name: discovery # Application name - Other services can refer to it by this name when looking it up in Eureka
+#  config:
+#    import: optional:configserver:http://localhost:8888 # If the Config Server is unavailable, the application will still start using local configurations
+
+eureka:
+  instance:
+    hostname: localhost # Eureka instance settings
+  client:
+    register-with-eureka: false # prevents to register itself as a client
+    fetch-registry: false # prevents from fetching the registry from other Eureka instances. Here, standalone, not in a cluster
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ # Defines the default Eureka service URL where clients can register
+
+
+
