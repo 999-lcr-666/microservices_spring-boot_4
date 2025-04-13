@@ -1,11 +1,10 @@
 # Microservices Demo Project
 
-#### by Laurent Crevola
-
 ![alt text](diagram.png)
 
 Personal project to have hands-on understanding of microservices architecture.
 The project consists of an API Gateway, Config Server, Discovery Server, and two microservices: Books and Authors.
+Adapted from a project by BOUALI Ali.
 
 ## Table of Contents
 
